@@ -1,0 +1,6 @@
+Diam 2.00 cm Section 3.14 cm Surface 12.57 Volume 4.19
+Diam 4.00 cm Section 12.57 cm Surface 50.27 Volume 33.51
+Diam 6.00 cm Section 28.27 cm Surface 113.10 Volume 113.10
+Diam 2.40 cm Section 4.52 cm Surface 18.10 Volume 7.24
+Diam 24.00 cm Section 452.39 cm Surface 1809.56 Volume 7238.23
+Diam 14.00 cm Section 153.94 cm Surface 615.75 Volume 1436.76
