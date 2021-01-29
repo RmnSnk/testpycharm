@@ -36,13 +36,34 @@ def affichage(liste):
     return l
 
 
-def main(n):
-    #n = int(input("Sur combien d'entier on travail ? : "))
+def main1(n):
+
+    """Assemble le programme et renvoi la liste de tous les nombres premier de 0 à n"""
+
     liste_brute = liste(n)
     liste_binaire = trouvelespremier(liste_brute)
     liste_entier = affichage(liste_binaire)
     print(liste_entier)
 
 
+def main2(n):
 
-# TODO faire les tests unitairesi
+    """Renvoi false si le nombre n'est pas entier, true sinon
+    Pour le savoir on cherche tous les nombre premier entre 0 et n/2 en effet après la division donnera
+    forcement un dividende inférieur à 2 et donc"""
+
+    liste_diviseur = affichage(trouvelespremier(liste(1+(n//2))))
+
+    flag = 0
+    diviseurs = []
+    for i in liste_diviseur:
+        a = n % i
+        if a == 0:
+            flag += 1
+            diviseurs.append(str(i))
+    if flag == 0:
+        return print(f"{n} nombre est premier")
+    else:
+        diviseurs = ", ".join(diviseurs)
+        return print(f"{n} n'est pas premier, ses diviseurs premiers sont : {diviseurs}")
+

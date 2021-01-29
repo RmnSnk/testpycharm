@@ -13,4 +13,5 @@ parser.add_argument("-v", "--verbose", action="store_true", help="augmente le ni
 args = parser.parse_args()
 
 if __name__ == '__main__':
-    exo.main(args.n)
+    exo.main1(args.n)
+    exo.main2(args.n)
