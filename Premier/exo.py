@@ -36,8 +36,8 @@ def affichage(liste):
     return l
 
 
-def main():
-    n = int(input("Sur combien d'entier on travail ? : "))
+def main(n):
+    #n = int(input("Sur combien d'entier on travail ? : "))
     liste_brute = liste(n)
     liste_binaire = trouvelespremier(liste_brute)
     liste_entier = affichage(liste_binaire)
