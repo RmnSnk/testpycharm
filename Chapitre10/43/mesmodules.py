@@ -8,6 +8,7 @@ def trie(nombre, fraction):
     La fonction trie attend deux paramètres : 
     nombre : le nombre d'éléments à tirer
     fraction : ne nombre d'intervals dans lesquels trier les valeurs
+    Elle retourne la liste du nombre d'occurence par fraction
     """
 
     compteur_fraction = [0] * fraction
@@ -49,8 +50,8 @@ def affichage(l):
         print(f"La catégorie {l.index(elt) + 1} contient {elt} éléments")
 
 
-def main():
-    nombre = int(input("Le nombre de tirage ? : "))
-    fraction = int(input("Le nombre de fraction ? : "))
+def main(nombre, fraction):
+    #nombre = int(input("Le nombre de tirage ? : "))
+    #fraction = int(input("Le nombre de fraction ? : "))
     l = trie(nombre, fraction)
     affichage(l)
