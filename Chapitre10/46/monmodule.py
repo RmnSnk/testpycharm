@@ -2,6 +2,7 @@
 
 """Programme qui permet de simuler une base de donnée en lecture / écriture grâce à un dictionnaire"""
 
+import pickle as pick
 
 def saisir(dictionnaire):
 
@@ -87,7 +88,37 @@ def menu(dictionnaire):
        saisir(dictionnaire)
        menu(dictionnaire)
     else:
+        enregistrement(dictionnaire)
+        print("Fichier enregistré")
         exit()
+
+def enregistrement(dictionnaire):
+
+    """
+
+    :param dictionnaire: le dictionnaire à sauvegarder
+    :return:
+    """
+    with open('dictionnaire', 'wb') as fichier:
+        mon_pickler = pick.Pickler(fichier)
+        mon_pickler.dump(dictionnaire)
+
+
+def lecture():
+
+    """
+
+    :return: le dictionnaire
+    """
+
+    with open('dictionnaire', 'rb') as fichier:
+        mon_depickler = pick.Unpickler(fichier)
+        dictionnaire = mon_depickler.load()
+
+        return dictionnaire
+
+
+
 
 
 def main(dictionnaire):
@@ -99,5 +130,7 @@ def main(dictionnaire):
 
     menu(dictionnaire)
 
-dictionnaire = {'romain sonneck': (41, 1.7)}
+
+
+dictionnaire = lecture()
 main(dictionnaire)
