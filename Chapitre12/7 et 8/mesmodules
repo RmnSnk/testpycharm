@@ -1,0 +1,123 @@
+# coding:utf-8
+
+import random
+
+""""
+
+Modules définissant deux class : l'une représentant une carte d'un jeu de 52 et l'autre le jeu lui même
+
+"""
+
+class Carte():
+
+    """"
+
+    Objet représentant une carte
+
+    """
+
+    dict_valeur = {2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9",
+                   10: "10", 11: "Valet", 12: "Dame", 13: "Roi", 14: "As"}
+
+    dict_embleme = {0: "Pique", 1: "Trèfle", 2: "Carreau", 3: "Coeur"}
+
+    def __init__(self, valeur, embleme):
+        self.valeur = valeur
+        self.embleme = embleme
+
+    def __str__(self):
+        return f"{self.dict_valeur[self.valeur]} de {self.dict_embleme[self.embleme]}"
+
+
+
+class Jeudecarte():
+
+    """
+
+    Classe permettant d'instancier un jeu de cartes de 52 cartes dont l'attribut est la liste des carte
+
+    """
+
+    def __init__(self):
+
+        jeu =[]
+        for embleme in range(4):
+            for valeur in range(2, 15):
+                carte = Carte(valeur, embleme)
+                jeu.append(carte)
+        self.jeu = jeu
+
+    def __str__(self):
+        affiche_jeu = []
+        for carte in self.jeu:
+            affiche_jeu.append(str(carte))
+        return str(affiche_jeu)
+
+    def __len__(self):
+        return len(self.jeu)
+
+    def battre(self):
+        random.shuffle(self.jeu)
+
+    def tirer(self):
+        if len(self.jeu) == 0:
+            print("Le jeu est vide")
+            return None
+        else:
+            carte_tiree = self.jeu[0]
+            del self.jeu[0]
+            return carte_tiree
+
+
+class Joueur():
+
+    """
+
+    Class dont les instances représentes des joeurs de carte :)
+
+    """
+
+    def __init__(self, nom):
+
+        self.nom = nom
+        self.deck = Jeudecarte()
+        self.score = 0
+
+
+    def plusunpoint(self):
+        self.score += 1
+
+def vainqueur():
+
+    print(f"Romain a {romain.score} point(s)")
+    print(f"Sarah a {sarah.score} point(s)")
+
+    if romain.score > sarah.score:
+        print("Romain gagne !")
+    elif romain.score < sarah.score:
+        print("Sarah gagne :")
+    else:
+        print("Match nul !")
+
+
+romain = Joueur("romain")
+romain.deck.battre()
+
+sarah = Joueur("sarah")
+sarah.deck.battre()
+
+
+for tour in range(52):
+    carte_romain = romain.deck.tirer()
+    carte_sarah = sarah.deck.tirer()
+
+    if carte_romain.valeur > carte_sarah.valeur:
+        romain.plusunpoint()
+
+    if carte_romain.valeur < carte_sarah.valeur:
+        sarah.plusunpoint()
+
+
+vainqueur()
+
+
